@@ -1,0 +1,89 @@
+import java.util.*;
+
+public class App {	
+
+	
+	public static int dados[];	
+	public static int indice=0;
+	public static Scanner scan;
+	
+	public static void inserir(int valor){		
+		if((indice==dados.length)){		
+		dados=aumentaarray();
+		}
+		dados[indice]=valor;
+		indice++;
+	}
+	
+	public static void remover (int posicao){
+		dados[posicao]=0;
+		/*if(dados[posicao+1]>0){
+		dados[posicao]=dados[posicao+1];
+		dados[posicao+1]=0;
+		}*/
+		
+		dados=diminuirarray();
+		indice--;
+		/*for(int i=0;i<dados.length;i++){
+			if(dados[i]==0){
+				
+			}
+		}*/
+	}
+	
+	public static int[] aumentaarray(){
+		int aux[]=new int[dados.length+1];
+		System.arraycopy(dados, 0, aux,0, dados.length);
+		return aux;
+		
+	}
+	
+	public static int[] diminuirarray(){
+		int aux[]=new int[dados.length-1];
+		System.arraycopy(dados, 0, aux,0, dados.length-1);
+		return aux;
+		
+	}
+	
+	public static void main(String[] args) {
+		
+		scan=new Scanner(System.in);		
+		dados = new int[1];			
+		
+	/*	for(int i=0;i<10;i++){	
+			inserir(new Random().nextInt(100));
+			System.out.println(dados[i]);
+		}*/
+		
+		while(true){
+			System.out.println("MENU\n1=inserir\n2=remover\n3=sair");
+			int aux=scan.nextInt();
+			switch(aux){
+			case 1: System.out.println("Digite o valor a ser adicionado no array");
+			int auxx=scan.nextInt();
+			inserir(auxx);
+			for(int i=0;i<dados.length;i++){
+				System.out.println(dados[i]);
+			}
+				break;
+			case 2:
+				System.out.println("digite a posicao a ser deletada");
+				int aux2=scan.nextInt();
+				remover(aux2);
+				for(int i=0;i<dados.length;i++){
+					System.out.println(dados[i]);
+				}
+				break;
+			case 3:
+				System.exit(0);
+				break;
+			default:System.out.println("deu merda");
+			
+			}
+		}
+		
+		
+
+	}
+
+}
