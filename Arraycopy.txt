@@ -51,17 +51,18 @@ public class App {
 			System.out.println("tamanho de aux2:"+(aux2.length));
 			System.out.println("tamanho de aux3:"+(aux3.length));
 			
-			for (i=0;i<aux2.length;i++){
+			/*for (i=0;i<aux2.length;i++){
 				aux[i]=aux2[i];
 				//System.out.println("aux2 = "+aux2[i]);
-			}
-			
-			for(int a=0;a<aux3.length;a++){
+			}*/
+			System.arraycopy(aux2, 0, aux, 0, aux2.length);	
+			System.arraycopy(aux3, 0, aux,aux2.length, aux3.length);	
+			/*for(int a=0;a<aux3.length;a++){
 				
 				aux[i]=aux3[a];		
 				//System.out.println("aux3 = "+aux3[a]);
 				i++;
-			}
+			}*/
 		
 			
 		}else{
