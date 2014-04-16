@@ -15,14 +15,16 @@ public class App {
 		indice++;
 	}
 	
-	public static void remover (int posicao){		
-				
+	public static void remover (int posicao){
+		if(posicao<0||posicao>dados.length-1){
+			System.out.println("Posicao invalida");			
+		}else{	
 		
 		dados=diminuirarray(posicao);
 		indice--;
 		System.out.println("aux2: "+(posicao-1));
 		System.out.println("aux3:"+(dados.length-posicao-1));
-		
+		}
 	}
 	
 	public static int[] aumentaarray(){
@@ -33,8 +35,8 @@ public class App {
 	}
 	public static int i;
 	
-	public static int[] diminuirarray(int posicao){	
-		int aux[]=new int[dados.length-1];
+	public static int[] diminuirarray(int posicao){
+		int aux[]=new int[dados.length-1];		
 		
 		if(posicao==0){
 			System.arraycopy(dados, 1, aux, 0, dados.length-1);			
@@ -70,6 +72,7 @@ public class App {
 		}
 		
 		return aux;		
+		
 	}
 	
 	public static void main(String[] args) {
