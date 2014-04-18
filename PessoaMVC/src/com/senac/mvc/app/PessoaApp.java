@@ -1,10 +1,20 @@
 package com.senac.mvc.app;
 
+import com.senac.mvc.controller.PessoaController;
+
 public class PessoaApp {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		
+		
+		PessoaController controller = new PessoaController();
+		
+		for(int i=0;i<49;i++){
+			System.out.println("----------------");
+		controller.gerarDados();
+		controller.mostraPessoa();
+		System.out.println("\n");
+		}
 	}
 
 }
