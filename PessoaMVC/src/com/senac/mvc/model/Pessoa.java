@@ -5,10 +5,16 @@ public class Pessoa {
 	private String nome;
 	private String telefone;
 	private String endereco;
+	private Telefone t;
 	
 	
 	
-	
+	public Telefone getT() {
+		return t;
+	}
+	public void setT(Telefone t) {
+		this.t = t;
+	}
 	public String getNome() {
 		return nome;
 	}

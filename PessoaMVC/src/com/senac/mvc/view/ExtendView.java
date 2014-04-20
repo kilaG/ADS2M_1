@@ -7,5 +7,10 @@ public class ExtendView {
 		System.out.println("Endereco: "+endereco);
 		//System.out.println("Telefone: "+ telefone);
 	}
+	
+	public void imprimeTelefone(String tipo, String telefone){
+		System.out.println("Tipo: "+tipo+"\nTelefone: "+telefone);
+	}
+	
 
 }

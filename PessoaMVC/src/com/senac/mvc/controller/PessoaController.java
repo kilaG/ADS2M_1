@@ -2,7 +2,11 @@ package com.senac.mvc.controller;
 
 import java.util.Random;
 
+
+
+
 import com.senac.mvc.model.Pessoa;
+import com.senac.mvc.model.Telefone;
 import com.senac.mvc.view.ExtendView;
 
 public class PessoaController {
@@ -10,6 +14,8 @@ public class PessoaController {
 	private ExtendView view = new ExtendView();
 	
 	private Pessoa p;
+	
+
 	
 	 String[] nomes ={"Rogerio",
 			 "Ronaldo",
@@ -50,7 +56,7 @@ public class PessoaController {
 			 "Rua Alcides Cruz",
 			 "Rua da Redencao"};
 	
-	public void gerarDados(){
+	public void gerarDados(Telefone t){
 		 Random ger = new Random();
 		 
 		 String nome = nomes[(ger.nextInt(nomes.length-1))]+" "+sobrenomes[(ger.nextInt(sobrenomes.length-1))];
@@ -59,6 +65,7 @@ public class PessoaController {
 		 p=new Pessoa();
 		 p.setNome(nome);
 		 p.setEndereco(endereco);		 
+		 p.setT(t);
 	 }
 	
 	public void mostraPessoa(){
