@@ -14,7 +14,7 @@ public class App {
 		int a=vetorDesempilhados.length-2;
 		
 		for(int i=0;i<vetorDesempilhados.length-1;i++){
-			if(vetorDesempilhados[i]==vetorDesempilhados[a]){		;			
+			if(vetorDesempilhados[i]==vetorDesempilhados[a]){			
 			status=true;
 			}else{
 				status=false;
@@ -43,6 +43,7 @@ public class App {
 		
 		while(!binario.isEmpty()){
 			System.out.println(binario.pop());
+			
 		}
 		
 	}
@@ -51,7 +52,7 @@ public class App {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub			
 		
-		/*Pilha p = new Pilha();
+		Pilha p = new Pilha();
 		p.push("r");
 		p.push("o");
 		p.push("d");
@@ -61,20 +62,22 @@ public class App {
 		p.push("r");
 				
 		if(App.verificaPalindromo(p)){
-			System.out.println("eh palindromo");
+			System.out.println("EXERCICIO 1\n\n"
+					+ "eh palindromo");
 		}else{
-			System.out.println("NO!");
-			}*/
+			System.out.println("Nao eh palindromo!");
+			}
+		System.out.println("\n--------------");
 	
 		
 		
 		
 		Pilha binario = new Pilha();
 		Pilha p2 = new Pilha();
-		p2.push(1);
-		
+		p2.push(50);
+		System.out.println("EXERCICIO 2\n");
 		App.conversaoBinaria(p2,binario);
-		
+		System.out.println("\n--------------");
 		
 		
 	}
