@@ -1,0 +1,8 @@
+package com.senac.mvc.model;
+
+public class Telefone {
+	
+	String tipo;
+	String fone;
+
+}

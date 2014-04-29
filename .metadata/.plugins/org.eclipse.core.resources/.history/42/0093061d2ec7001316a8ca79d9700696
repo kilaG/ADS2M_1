@@ -1,0 +1,34 @@
+package com.senac.mvc.controller;
+
+public class PessoaController {
+	
+	 String[] nomes ={"Rogerio",
+			 "Ronaldo",
+			 "Guilherme",
+			 "Fabiane",
+			 "Sabrina",
+			 "Julia",
+			 "Arnold",
+			 "Neymar",
+			 "Romario",
+			 "Walter",
+			 "Maria",
+			 "Gustavo"};
+	 
+	 String[] sobrenomes ={"da Silva",
+			 "Junior",
+			 "Kila",
+			 "Lima",
+			 "Schwarzenegger",
+			 "Sato",
+			 "Robertz",
+			 "Santos",
+			 "de Jeseus",
+			 "Nazario",
+			 "da Rocha",
+			 "Dias"};
+	
+	 void gerarDados(){
+		 System.out.println();
+	 }
+}

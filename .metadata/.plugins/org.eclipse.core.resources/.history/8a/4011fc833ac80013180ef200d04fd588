@@ -1,0 +1,17 @@
+package com.senac.mvc.controller;
+
+import com.senac.mvc.model.Pessoa;
+import com.senac.mvc.model.Telefone;
+import com.senac.mvc.view.ExtendView;
+
+public class TelefoneController {
+	
+	private ExtendView view = new ExtendView();
+	
+	private Telefone t;
+	
+	public void gerarFone(){
+		
+	}
+
+}

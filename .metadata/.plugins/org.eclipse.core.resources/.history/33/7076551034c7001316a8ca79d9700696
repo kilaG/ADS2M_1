@@ -1,0 +1,17 @@
+package com.senac.mvc.app;
+
+import com.senac.mvc.controller.PessoaController;
+
+public class PessoaApp {
+
+	public static void main(String[] args) {
+		
+		
+		PessoaController controller = new PessoaController();
+		
+		controller.gerarDados();
+		controller.mostraPessoa();
+
+	}
+
+}
