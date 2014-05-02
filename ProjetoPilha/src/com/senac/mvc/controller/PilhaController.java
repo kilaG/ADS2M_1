@@ -7,7 +7,56 @@ public class PilhaController {
 	
 	private ExtendView view = new ExtendView();
 	
+	
 	private Pilha p;
+	
+	
+	public static void calculaInfixa(Pilha p,Pilha p2){
+		String[] vetor = new String[20];
+		int indice=0;
+		
+		while(!p.isEmpty()){			
+			
+			if(p.pop().equals("+")||p.pop().equals("-")||p.pop().equals("*")||p.pop().equals("/")){
+				if(!p.pop().equals("+")||!p.pop().equals("-")){
+					vetor[indice]=p.pop().toString();
+					p2.push(vetor[indice]);
+					indice++;
+				}else if(!p.pop().equals("*")||!p.pop().equals("/")){
+					vetor[indice]=p.pop().toString();
+					p2.push(vetor[indice]);
+					indice++;
+				}
+			}
+			if(p.pop().equals("(")){
+				p2.push(p.pop());
+			}
+			if(p.pop().equals(")")){
+				while(!(p.pop().equals("+")||p.pop().equals("-")||p.pop().equals("*")||p.pop().equals("/"))){
+					sadsa
+				}
+			}
+		}
+			
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+	
 	
 	
 	public static boolean verificaPalindromo(Pilha p){
