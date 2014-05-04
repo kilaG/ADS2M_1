@@ -17,7 +17,7 @@ public class PilhaApp {
 		
 		PilhaController pilha = new PilhaController();
 		
-		Pilha palindromo = new Pilha();
+	/*	Pilha palindromo = new Pilha();
 		palindromo.push("t");
 		palindromo.push("t");
 		palindromo.push("t");
@@ -35,7 +35,13 @@ public class PilhaApp {
 		
 		p1.push(50);
 		pilha.conversaoBinaria(p1, p2);
-		pilha.mostraBinario(p1,p2);
+		pilha.mostraBinario(p1,p2);*/
+		
+		String exp="5+5*(10*5)";
+		Pilha p = new Pilha();
+		
+		pilha.infix2posfix(p, exp);
+		
 		
 		
 		

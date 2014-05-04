@@ -11,7 +11,7 @@ public class PilhaController {
 	private Pilha p;
 	
 	
-	public static void calculaInfixa(Pilha p,Pilha p2){
+/*	public static void calculaInfixa(Pilha p,Pilha p2){
 		String[] vetor = new String[20];
 		int indice=0;
 		
@@ -33,23 +33,70 @@ public class PilhaController {
 			}
 			if(p.pop().equals(")")){
 				while(!(p.pop().equals("+")||p.pop().equals("-")||p.pop().equals("*")||p.pop().equals("/"))){
-					sadsa
+					
 				}
 			}
 		}
+	}*/
+	
+	public void infix2posfix(Pilha p, String expresion){
+		
+		char[] exp= new char[expresion.length()-1];
+		exp=expresion.toCharArray();				
+		char[] postfix= new char[expresion.length()-1];
+		
+		int indiceposfix=0;
+		for(int i=0;i<exp.length;i++){
+			if(!isOperator(exp[i])){
+				postfix[indiceposfix]=exp[i];
+				indiceposfix++;
+			}else if(isOperator(exp[i])){
+				if(p.isEmpty()){
+					p.push(exp[i]);	
+				}else{
+					char[] aux=p.top().toString().toCharArray();
+					if(prioridade(aux[0])>=prioridade(exp[i])){
+						postfix[indiceposfix]=aux[0];
+						p.pop();
+						p.push(exp[i]);
+					}else{
+						p.push(exp[i]);
+						
+					}
+				}
+				
+			}
 			
+		}
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public boolean isOperator(char c){
+		if(c=='+'||c=='-'||c=='*'||c=='/'){
+			return true;			
+		}else{
+			return false;
+		}
+	}
+	
+	public int prioridade(char c){
+		if(c=='+'||c=='-'){
+				return 1;		
+		}else if(c=='*'||c=='/'){
+			return 2;
+		}else{
+			return 0;
+		}
 	}
 	
 	
