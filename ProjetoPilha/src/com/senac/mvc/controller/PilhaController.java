@@ -30,9 +30,9 @@ public class PilhaController {
 					p.push(exp[i]);
 					
 				}else{
-					
-					for(int ii=0;ii<p.size();ii++){	
-						System.out.println("iterecao da pilha"+ii);
+					int ii=p.size();
+					for(int iii=0;iii<ii;iii++){	
+						System.out.println("iterecao da pilha"+iii);
 						
 					if(prioridade(p.top().toString().toCharArray())>prioridade(exp[i])){
 						System.out.println("caiu no if 1, p.top="+p.top().toString());
@@ -46,6 +46,9 @@ public class PilhaController {
 						
 						p.push(exp[i]);
 						
+					}else if(prioridade(p.top().toString().toCharArray())==prioridade(exp[i])){
+						posfix+=p.pop().toString();
+						p.push(exp[i]);
 					}
 					
 					
@@ -61,8 +64,10 @@ public class PilhaController {
 			
 			
 		}
+				
 		
-		for(int i1=0;i1<p.size();i1++){
+		while(!p.isEmpty()){
+			System.err.println(p.top().toString());
 			posfix+=p.pop().toString();
 		}
 		
