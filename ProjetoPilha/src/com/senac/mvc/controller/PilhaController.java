@@ -8,82 +8,108 @@ public class PilhaController {
 	private ExtendView view = new ExtendView();
 	
 	
-	private Pilha p;
+	private Pilha p;	
+
 	
 	
-/*	public static void calculaInfixa(Pilha p,Pilha p2){
-		String[] vetor = new String[20];
-		int indice=0;
+	public String infixaparaposfixa(Pilha p,String expre){
 		
-		while(!p.isEmpty()){			
+		
+		char[] exp = expre.toCharArray();		
+		String posfix = "";
+		
+		for(int i =0 ; i < exp.length;i++){
+			//System.out.println("iterecao do sistema:"+i);
 			
-			if(p.pop().equals("+")||p.pop().equals("-")||p.pop().equals("*")||p.pop().equals("/")){
-				if(!p.pop().equals("+")||!p.pop().equals("-")){
-					vetor[indice]=p.pop().toString();
-					p2.push(vetor[indice]);
-					indice++;
-				}else if(!p.pop().equals("*")||!p.pop().equals("/")){
-					vetor[indice]=p.pop().toString();
-					p2.push(vetor[indice]);
-					indice++;
-				}
-			}
-			if(p.pop().equals("(")){
-				p2.push(p.pop());
-			}
-			if(p.pop().equals(")")){
-				while(!(p.pop().equals("+")||p.pop().equals("-")||p.pop().equals("*")||p.pop().equals("/"))){
-					
-				}
-			}
-		}
-	}*/
-	
-	public void infix2posfix(Pilha p, String expresion){
-		
-		char[] exp= new char[expresion.length()-1];
-		exp=expresion.toCharArray();				
-		char[] postfix= new char[expresion.length()-1];
-		
-		int indiceposfix=0;
-		for(int i=0;i<exp.length;i++){
-			if(!isOperator(exp[i])){
-				postfix[indiceposfix]=exp[i];
-				indiceposfix++;
+			if(ehNumero(exp[i])){
+				posfix+=exp[i];		
+				
 			}else if(isOperator(exp[i])){
+				
 				if(p.isEmpty()){
-					p.push(exp[i]);	
+					p.push(exp[i]);
+					
 				}else{
-					char[] aux=p.top().toString().toCharArray();
-					if(prioridade(aux[0])>=prioridade(exp[i])){
-						postfix[indiceposfix]=aux[0];
-						p.pop();
+					
+					for(int ii=0;ii<p.size();ii++){	
+						System.out.println("iterecao da pilha"+ii);
+						
+					if(prioridade(p.top().toString().toCharArray())>prioridade(exp[i])){
+						System.out.println("caiu no if 1, p.top="+p.top().toString());
+						System.out.println("caiu no if 1, exp="+exp[i]);
+						posfix+=p.pop().toString();
 						p.push(exp[i]);
-					}else{
+						
+					}else if(prioridade(p.top().toString().toCharArray())<prioridade(exp[i])){
+						System.out.println("caiu no if 2, exp="+exp[i]);
+						System.out.println("caiu no if 2, p.top="+p.top().toString());
+						
 						p.push(exp[i]);
 						
 					}
+					
+					
+					
+					
+					
+												}
+					
+					
 				}
 				
 			}
 			
+			
 		}
 		
+		for(int i1=0;i1<p.size();i1++){
+			posfix+=p.pop().toString();
+		}
+		
+		
+		
+		return posfix;
+	
 	}
-	
-	
-	
-	
-	
-	
-	
-	
+		
 	
 	
 	
 	public boolean isOperator(char c){
-		if(c=='+'||c=='-'||c=='*'||c=='/'){
+		if(c=='+'||c=='-'||c=='*'||c=='/'||c=='('||c==')'){
 			return true;			
+		}else{
+			return false;
+		}
+	}
+	
+	public boolean ehNumero(Object c){
+		try{
+		String a=c.toString();
+		if(Integer.parseInt(a)>=0||Integer.parseInt(a)<=0){
+			return true;
+		}else{
+			return false;
+		}
+	}catch(NumberFormatException n){
+		
+	}
+		return false;
+		
+		
+	}
+	
+	public boolean ehAbre(char c){
+		if(c=='('){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
+	public boolean ehFecha(char c){
+		if(c==')'){
+			return true;
 		}else{
 			return false;
 		}
@@ -99,6 +125,15 @@ public class PilhaController {
 		}
 	}
 	
+	public int prioridade(char[] c){
+		if(c[0]=='+'||(c[0]=='-')){
+				return 1;		
+		}else if(c[0]=='*'||c[0]=='/'){
+			return 2;
+		}else{
+			return 0;
+		}
+	}
 	
 	
 	
