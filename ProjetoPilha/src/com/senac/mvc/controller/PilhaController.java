@@ -60,15 +60,34 @@ public class PilhaController {
 					
 				}
 				
+			}else if(isParenFecha(exp[i])){
+				int aa=p.size();
+				
+				for(int a=0;a<aa;a++){
+				char aux[]=p.pop().toString().toCharArray();
+				if(aux[0]!=')'){
+					posfix+=aux[0];
+					
+				}else{
+					break;
+				}
+				
+				}
+				
+				
+				
 			}
 			
 			
 		}
 				
-		
-		while(!p.isEmpty()){
+		int a=p.size();
+		while(a!=0){
 			System.err.println(p.top().toString());
+			if(!p.top().toString().equals("(")||p.top().toString().equals(")")){
 			posfix+=p.pop().toString();
+			}
+			a--;
 		}
 		
 		
@@ -81,8 +100,16 @@ public class PilhaController {
 	
 	
 	public boolean isOperator(char c){
-		if(c=='+'||c=='-'||c=='*'||c=='/'||c=='('||c==')'){
+		if(c=='+'||c=='-'||c=='*'||c=='/'){
 			return true;			
+		}else{
+			return false;
+		}
+	}
+	
+	public boolean isParenFecha(char c){
+		if(c==')'){
+			return true;
 		}else{
 			return false;
 		}
@@ -125,6 +152,8 @@ public class PilhaController {
 				return 1;		
 		}else if(c=='*'||c=='/'){
 			return 2;
+		}else if(c=='('){
+			return 3;
 		}else{
 			return 0;
 		}

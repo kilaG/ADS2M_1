@@ -12,7 +12,7 @@ public class Pilha {
 	
 	public Pilha(){
 		this.ponteiro=-1;
-		this.vetor = new Object[20];
+		this.vetor = new Object[30];
 	}
 	
 	public boolean isEmpty(){
