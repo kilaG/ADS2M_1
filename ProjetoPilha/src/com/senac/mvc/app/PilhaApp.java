@@ -37,7 +37,7 @@ public class PilhaApp {
 		pilha.conversaoBinaria(p1, p2);
 		pilha.mostraBinario(p1,p2);*/
 		
-		String exp="4*2*3-3+8/4";
+		String exp="4*2*3-3+8/4/(1+1)";
 		Pilha p = new Pilha();
 		
 		/*System.out.println(pilha.infix2posfix(p, exp));*/

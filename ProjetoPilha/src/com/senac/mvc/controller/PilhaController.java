@@ -61,12 +61,18 @@ public class PilhaController {
 				}
 				
 			}else if(isParenFecha(exp[i])){
+				System.out.println("יי");
 				int aa=p.size();
 				
 				for(int a=0;a<aa;a++){
-				char aux[]=p.pop().toString().toCharArray();
-				if(aux[0]!=')'){
-					posfix+=aux[0];
+			//	
+				//if(aux[0]!=')'){
+					if(p.top().toString()!="("){
+						
+						System.err.println("י--"+p.top().toString());
+						char aux[]=p.pop().toString().toCharArray();
+						//System.err.println(aux[0]);
+					    posfix+=aux[0];
 					
 				}else{
 					break;
@@ -74,6 +80,10 @@ public class PilhaController {
 				
 				}
 				
+				
+				
+			}else if(ehAbre(exp[i])){
+				p.push(exp[i]);				
 				
 				
 			}
@@ -164,6 +174,8 @@ public class PilhaController {
 				return 1;		
 		}else if(c[0]=='*'||c[0]=='/'){
 			return 2;
+		}else if(c[0]=='('){
+			return 3;
 		}else{
 			return 0;
 		}
