@@ -6,4 +6,5 @@
 <fullyQualifiedTypeName name="java.lang.AssertionError"/>
 <fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
 <fullyQualifiedTypeName name="com.senac.mvc.controller.PessoaController"/>
+<fullyQualifiedTypeName name="java.lang.NullPointerException"/>
 </qualifiedTypeNameHistroy>

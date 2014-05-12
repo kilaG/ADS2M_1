@@ -19,8 +19,9 @@ public class PilhaController {
 		String posfix = "";
 		
 		for(int i =0 ; i < exp.length;i++){
+			System.err.println("\ntam da bagaca"+p.size());
 			System.err.println(exp[i]);
-			//System.out.println("iterecao do sistema:"+i);
+			
 			
 			if(ehNumero(exp[i])){
 				posfix+=exp[i];		
@@ -55,25 +56,46 @@ public class PilhaController {
 						p.push(exp[i]);
 						
 					}else if(prioridade(p.top().toString().toCharArray())==prioridade(exp[i])){
+						
+						
+						
 						System.out.println("caiu no if 3, exp="+exp[i]);
 						System.out.println("caiu no if 3, p.top="+p.top().toString());
 						posfix+=p.pop().toString();
-						//p.push(exp[i]);
-						int num=p.size();
 						
-						while(!p.isEmpty()||num>0)
-						{
+						int d=p.size();
+						
+						if(d==0){
+							p.push(exp[i]);
+						}else{
+							
+						}
+						while(d>0){
+							
+							
 							if(prioridade(p.top().toString().toCharArray())<prioridade(exp[i])){
 								p.push(exp[i]);
 							}else if(prioridade(p.top().toString().toCharArray())>prioridade(exp[i])){
+								if(p.top().toString().equals("(")){
+									p.push(exp[i]);							
+								}else{
+								
+								System.out.println("caiu no if 1, p.top="+p.top().toString());
+								System.out.println("caiu no if 1, exp="+exp[i]);
 								posfix+=p.pop().toString();
 								p.push(exp[i]);
+								}
 							}else if(prioridade(p.top().toString().toCharArray())==prioridade(exp[i])){
-								posfix+=p.pop().toString();
-								
+								posfix+=p.pop();
 							}
-							num--;
+							
+							d--;
 						}
+						
+						
+					
+						
+			
 					}
 					
 					
@@ -88,19 +110,21 @@ public class PilhaController {
 			}else if(isParenFecha(exp[i])){
 				System.out.println("יי");
 				int aa=p.size();
+				System.out.println("\n\ntam da pilhaaaa: "+aa);
 				
 				for(int a=0;a<aa;a++){
 			//	
 				//if(aux[0]!=')'){
-					if(p.top().toString()!="("){
+					if(!p.top().toString().equals("(")){
 						
 						System.err.println("י--"+p.top().toString());
 						char aux[]=p.pop().toString().toCharArray();
 						//System.err.println(aux[0]);
 					    posfix+=aux[0];
 					
-				}else{
-					break;
+				}else{					
+					p.pop();					
+					
 				}
 				
 				}
@@ -111,19 +135,25 @@ public class PilhaController {
 				p.push(exp[i]);				
 				
 				
+						
 			}
 			
 			
 		}
+		
+		
+	
 				
-		int a=p.size();
+		
+	/*	int a=p.size();
 		while(a!=0){
 			System.err.println(p.top().toString());
 			if(!p.top().toString().equals("(")||p.top().toString().equals(")")){
+				System.out.println(p.top().toString());
 			posfix+=p.pop().toString();
 			}
 			a--;
-		}
+		}*/
 		
 		
 		
@@ -132,6 +162,22 @@ public class PilhaController {
 	}
 		
 	
+	
+	
+	public void metodoAux(Pilha p, String posfix, char[] exp, int i){
+		if(!p.isEmpty()){
+			int v=p.size();
+			for(int x=0;x<v;x++){
+				if(prioridade(p.top().toString().toCharArray())>prioridade(exp[i])){
+					posfix+=p.top().toString();
+				}else if(prioridade(p.top().toString().toCharArray())<prioridade(exp[i])){
+					p.push(exp[i]);
+				}else if(prioridade(p.top().toString().toCharArray())==prioridade(exp[i])){
+					
+				}
+			}
+		}
+	}
 	
 	
 	public boolean isOperator(char c){
