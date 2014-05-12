@@ -19,6 +19,7 @@ public class PilhaController {
 		String posfix = "";
 		
 		for(int i =0 ; i < exp.length;i++){
+			System.err.println(exp[i]);
 			//System.out.println("iterecao do sistema:"+i);
 			
 			if(ehNumero(exp[i])){
@@ -31,14 +32,21 @@ public class PilhaController {
 					
 				}else{
 					int ii=p.size();
-					for(int iii=0;iii<ii;iii++){	
+					for(int iii=0;iii<ii;iii++){
+						System.out.println("tam pilha: "+ii);
 						System.out.println("iterecao da pilha"+iii);
 						
 					if(prioridade(p.top().toString().toCharArray())>prioridade(exp[i])){
+						
+						if(p.top().toString().equals("(")){
+							p.push(exp[i]);							
+						}else{
+						
 						System.out.println("caiu no if 1, p.top="+p.top().toString());
 						System.out.println("caiu no if 1, exp="+exp[i]);
 						posfix+=p.pop().toString();
 						p.push(exp[i]);
+						}
 						
 					}else if(prioridade(p.top().toString().toCharArray())<prioridade(exp[i])){
 						System.out.println("caiu no if 2, exp="+exp[i]);
@@ -47,8 +55,25 @@ public class PilhaController {
 						p.push(exp[i]);
 						
 					}else if(prioridade(p.top().toString().toCharArray())==prioridade(exp[i])){
+						System.out.println("caiu no if 3, exp="+exp[i]);
+						System.out.println("caiu no if 3, p.top="+p.top().toString());
 						posfix+=p.pop().toString();
-						p.push(exp[i]);
+						//p.push(exp[i]);
+						int num=p.size();
+						
+						while(!p.isEmpty()||num>0)
+						{
+							if(prioridade(p.top().toString().toCharArray())<prioridade(exp[i])){
+								p.push(exp[i]);
+							}else if(prioridade(p.top().toString().toCharArray())>prioridade(exp[i])){
+								posfix+=p.pop().toString();
+								p.push(exp[i]);
+							}else if(prioridade(p.top().toString().toCharArray())==prioridade(exp[i])){
+								posfix+=p.pop().toString();
+								
+							}
+							num--;
+						}
 					}
 					
 					
@@ -110,7 +135,7 @@ public class PilhaController {
 	
 	
 	public boolean isOperator(char c){
-		if(c=='+'||c=='-'||c=='*'||c=='/'){
+		if(c=='+'||c=='-'||c=='*'||c=='/'||c=='$'){
 			return true;			
 		}else{
 			return false;
@@ -163,9 +188,9 @@ public class PilhaController {
 		}else if(c=='*'||c=='/'){
 			return 2;
 		}else if(c=='('){
-			return 3;
+			return 4;
 		}else{
-			return 0;
+			return 3;
 		}
 	}
 	
@@ -175,9 +200,9 @@ public class PilhaController {
 		}else if(c[0]=='*'||c[0]=='/'){
 			return 2;
 		}else if(c[0]=='('){
-			return 3;
+			return 4;
 		}else{
-			return 0;
+			return 3;
 		}
 	}
 	
