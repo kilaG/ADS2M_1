@@ -19,7 +19,7 @@ public class PilhaController {
 		String posfix = "";
 		
 		for(int i =0 ; i < exp.length;i++){
-			System.err.println("\ntam da bagaca"+p.size());
+			System.err.println("\ntam da bagaca"+p.size()+"  i= "+i);
 			System.err.println(exp[i]);
 			
 			
@@ -53,8 +53,10 @@ public class PilhaController {
 						
 					if(prioridade(p.top().toString().toCharArray())>prioridade(exp[i])){
 						
-						if(p.top().toString().equals("(")){
-							p.push(exp[i]);							
+						if(p.top().toString().equals("(")){							
+							p.push(exp[i]);	
+							System.err.println("tamanho da p ilha: "+p.size());
+							break;
 						}else{
 						
 						System.out.println("caiu no if 1, p.top="+p.top().toString());
