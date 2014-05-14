@@ -17,7 +17,7 @@ public class PilhaController {
 		
 		char[] exp = expre.toCharArray();		
 		String posfix = "";
-		
+		boolean isover=false;
 		for(int i =0 ; i < exp.length;i++){
 			System.err.println("\ntam da bagaca"+p.size()+"  i= "+i);
 			System.err.println(exp[i]);
@@ -39,6 +39,11 @@ public class PilhaController {
 					int ii=p.size();
 					boolean vdd=false;
 					for(int iii=0;iii<ii;iii++){
+						if(isover){
+							break;
+						}else{
+							
+						}
 						//System.err.println(exp[i]);
 						System.err.println(p.top().toString());
 						System.out.println("tam pilha: "+ii);
@@ -73,6 +78,24 @@ public class PilhaController {
 						}
 						//adicionar ao if &&p.size()==1
 					}else if(prioridade(p.top().toString().toCharArray())<prioridade(exp[i])){
+						
+						if(ehFecha(exp[i])){
+							/*while(!p.top().toString().equals("(")){
+								posfix+=p.pop();
+							}*/
+							
+							while(!p.isEmpty()){
+								if(p.top().toString().equals("(")){
+									p.pop();
+									isover=true;
+									break;
+								}else{
+									posfix+=p.pop();
+								}
+							}
+							
+						}else{
+						
 						System.out.println("caiu no if 2, exp="+exp[i]);
 						System.out.println("caiu no if 2, p.top="+p.top().toString());
 						
@@ -84,6 +107,7 @@ public class PilhaController {
 							}
 						}
 						
+						}
 					}else if(prioridade(p.top().toString().toCharArray())==prioridade(exp[i])){
 						
 						
@@ -162,9 +186,16 @@ public class PilhaController {
 				
 			}
 			
+			if(isover){
+				break;
+			}
+			
 			
 		}
 		
+		while(!p.isEmpty()){
+			posfix+=p.pop();
+		}
 		
 		return posfix;
 	
