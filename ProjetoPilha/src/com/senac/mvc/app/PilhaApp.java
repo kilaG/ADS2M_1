@@ -10,6 +10,8 @@ import com.senac.mvc.model.Pilha;
 public class PilhaApp {
 
 	/**
+	 * 
+	 * BY GUILHERME KILA
 	 * @param args
 	 */
 	public static void main(String[] args) {
@@ -17,14 +19,11 @@ public class PilhaApp {
 		
 		PilhaController pilha = new PilhaController();
 		
-	/*	Pilha palindromo = new Pilha();
-		palindromo.push("t");
-		palindromo.push("t");
-		palindromo.push("t");
-		palindromo.push("t");
-		palindromo.push("t");
-		palindromo.push("t");
-		palindromo.push("t");		
+		Pilha palindromo = new Pilha();
+		palindromo.push("o");
+		palindromo.push("v");
+		palindromo.push("o");
+				
 		//pilha.verificaPalindromo(palindromo);
 		pilha.mostraPalindromo(pilha.verificaPalindromo(palindromo));
 		
@@ -35,18 +34,14 @@ public class PilhaApp {
 		
 		p1.push(50);
 		pilha.conversaoBinaria(p1, p2);
-		pilha.mostraBinario(p1,p2);*/
+		pilha.mostraBinario(p1,p2);
 		
-		String exp="4*2*3-3+8/4/(1+1)";
-		//String exp="";
-		Pilha p = new Pilha();
+	
+		String exp="2*2+(2*2)";
+		Pilha p = new Pilha();			
 		
-		/*System.out.println(pilha.infix2posfix(p, exp));*/
-		
-		//System.out.println("expressao infixa= "+pilha.infixaparaposfixa(p, exp));
-		
-		System.out.println(pilha.postfixCalculator(p, pilha.infixaparaposfixa(p, exp)));
-		
+		pilha.postfixCalculator(p, pilha.infixaparaposfixa(p, exp));
+		pilha.mostraExp(p);
 		
 
 	}

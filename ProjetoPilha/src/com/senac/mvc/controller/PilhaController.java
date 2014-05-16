@@ -19,8 +19,8 @@ public class PilhaController {
 		String posfix = "";
 		boolean isover=false;
 		for(int i =0 ; i < exp.length;i++){
-			System.err.println("\ntam da bagaca"+p.size()+"  i= "+i);
-			System.err.println(exp[i]);
+			/*System.err.println("\ntam da bagaca"+p.size()+"  i= "+i);
+			System.err.println(exp[i]);*/
 			
 			
 			if(ehNumero(exp[i])){
@@ -45,9 +45,11 @@ public class PilhaController {
 							
 						}
 						//System.err.println(exp[i]);
-						System.err.println(p.top().toString());
+						
+						/*System.err.println(p.top().toString());
 						System.out.println("tam pilha: "+ii);
-						System.out.println("iterecao da pilha"+iii);
+						System.out.println("iterecao da pilha"+iii);*/
+						
 						/*if(p.isEmpty()){
 							System.err.println("demu merdaaa");
 						}else{
@@ -60,12 +62,12 @@ public class PilhaController {
 						
 						if(p.top().toString().equals("(")){							
 							p.push(exp[i]);	
-							System.err.println("tamanho da p ilha: "+p.size());
+							//System.err.println("tamanho da p ilha: "+p.size());
 							break;
 						}else{
 						
-						System.out.println("caiu no if 1, p.top="+p.top().toString());
-						System.out.println("caiu no if 1, exp="+exp[i]);
+						//System.out.println("caiu no if 1, p.top="+p.top().toString());
+						//System.out.println("caiu no if 1, exp="+exp[i]);
 						posfix+=p.pop().toString();
 						p.push(exp[i]);
 						
@@ -96,8 +98,8 @@ public class PilhaController {
 							
 						}else{
 						
-						System.out.println("caiu no if 2, exp="+exp[i]);
-						System.out.println("caiu no if 2, p.top="+p.top().toString());
+						//System.out.println("caiu no if 2, exp="+exp[i]);
+						//System.out.println("caiu no if 2, p.top="+p.top().toString());
 						
 						p.push(exp[i]);
 						
@@ -112,8 +114,8 @@ public class PilhaController {
 						
 						
 						
-						System.out.println("caiu no if 3, exp="+exp[i]);
-						System.out.println("caiu no if 3, p.top="+p.top().toString());
+						//System.out.println("caiu no if 3, exp="+exp[i]);
+						//System.out.println("caiu no if 3, p.top="+p.top().toString());
 					//	posfix+=p.pop().toString();
 						if(p.size()==1){
 							posfix+=p.pop();
@@ -142,15 +144,15 @@ public class PilhaController {
 						
 			
 					}else if(isParenFecha(exp[i])){
-						System.out.println("éé");
+						//System.out.println("éé");
 						int aa=p.size();
-						System.out.println("\n\ntam da pilhaaaa: "+aa);
+						//System.out.println("\n\ntam da pilhaaaa: "+aa);
 						
 						for(int a=0;a<aa;a++){
 					
 							if(!p.top().toString().equals("(")){
 								
-								System.err.println("é--"+p.top().toString());
+							//	System.err.println("é--"+p.top().toString());
 								char aux[]=p.pop().toString().toCharArray();
 								//System.err.println(aux[0]);
 							    posfix+=aux[0];
@@ -204,24 +206,29 @@ public class PilhaController {
 	
 	
 	
-	public String postfixCalculator(Pilha p,String pos){
+	public Pilha postfixCalculator(Pilha p,String pos){
 		char[] exp=pos.toCharArray();
 		
 		for(int i=0;i<exp.length;i++){
+			//System.err.println("\n\nexp i"+exp[i]);
 			
-			if(ehNumero(exp[i])){				
+			if(ehNumero(exp[i])){	
+				//System.err.println("\n\né num: "+exp[i]);
 				p.push(exp[i]);
 				
 			}else if (isOperator(exp[i])){
 				String aux1=p.pop().toString();
+				//System.out.println("aux1= "+aux1);
 				String aux2=p.pop().toString();
+				//System.out.println("aux1= "+aux1);
 				p.push(calculadora(Integer.parseInt(aux1), Integer.parseInt(aux2), exp[i]));
 			}
-		
+			
+			
 			
 		}
 		
-		return p.pop().toString();
+		return  p;
 		
 		
 	}
@@ -401,6 +408,10 @@ public class PilhaController {
 	public void mostraPalindromo(boolean p){
 		view.imprimePalindromo(p);		
 		System.out.println("\n");
+	}
+	
+	public void mostraExp(Pilha pp){
+		view.imprimeExp(pp);
 	}
 	
 		
