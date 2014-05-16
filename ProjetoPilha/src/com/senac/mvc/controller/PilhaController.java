@@ -200,6 +200,51 @@ public class PilhaController {
 		return posfix;
 	
 	}
+	
+	
+	
+	
+	public String postfixCalculator(Pilha p,String pos){
+		char[] exp=pos.toCharArray();
+		
+		for(int i=0;i<exp.length;i++){
+			
+			if(ehNumero(exp[i])){				
+				p.push(exp[i]);
+				
+			}else if (isOperator(exp[i])){
+				String aux1=p.pop().toString();
+				String aux2=p.pop().toString();
+				p.push(calculadora(Integer.parseInt(aux1), Integer.parseInt(aux2), exp[i]));
+			}
+		
+			
+		}
+		
+		return p.pop().toString();
+		
+		
+	}
+	
+	public int calculadora(int a, int b, char c){
+		if(c=='*'){
+			return a*b;
+		}else if(c=='/'){
+			return b/a;
+		}else if(c=='-'){
+			return a-b;
+		}else if(c=='+'){
+			return a+b;
+		}else{
+			return 0;
+		}
+	}
+	
+	
+	
+	
+	
+	
 		
 	
 	

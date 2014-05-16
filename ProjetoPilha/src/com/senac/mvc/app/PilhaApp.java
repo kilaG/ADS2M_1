@@ -37,13 +37,15 @@ public class PilhaApp {
 		pilha.conversaoBinaria(p1, p2);
 		pilha.mostraBinario(p1,p2);*/
 		
-		String exp="4$2*3-3+8/4/(1+1)";
+		String exp="4*2*3-3+8/4/(1+1)";
+		//String exp="";
 		Pilha p = new Pilha();
 		
 		/*System.out.println(pilha.infix2posfix(p, exp));*/
 		
-		System.out.println(pilha.infixaparaposfixa(p, exp));
+		//System.out.println("expressao infixa= "+pilha.infixaparaposfixa(p, exp));
 		
+		System.out.println(pilha.postfixCalculator(p, pilha.infixaparaposfixa(p, exp)));
 		
 		
 
