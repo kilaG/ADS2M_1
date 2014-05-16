@@ -11,17 +11,15 @@ public class PilhaController {
 	private Pilha p;	
 
 	
-	
+	// transforma uma expressao infixa para a forma posfixa
 	public String infixaparaposfixa(Pilha p,String expre){
 		
 		
 		char[] exp = expre.toCharArray();		
 		String posfix = "";
 		boolean isover=false;
+		//percorre a expressao
 		for(int i =0 ; i < exp.length;i++){
-			/*System.err.println("\ntam da bagaca"+p.size()+"  i= "+i);
-			System.err.println(exp[i]);*/
-			
 			
 			if(ehNumero(exp[i])){
 				posfix+=exp[i];		
@@ -44,47 +42,24 @@ public class PilhaController {
 						}else{
 							
 						}
-						//System.err.println(exp[i]);
 						
-						/*System.err.println(p.top().toString());
-						System.out.println("tam pilha: "+ii);
-						System.out.println("iterecao da pilha"+iii);*/
-						
-						/*if(p.isEmpty()){
-							System.err.println("demu merdaaa");
-						}else{
-							
-						}
-						System.err.print("p.top= "+p.top().toString());
-						System.err.println(exp[i]);*/
 						
 					if(prioridade(p.top().toString().toCharArray())>prioridade(exp[i])){
 						
 						if(p.top().toString().equals("(")){							
-							p.push(exp[i]);	
-							//System.err.println("tamanho da p ilha: "+p.size());
+							p.push(exp[i]);								
 							break;
-						}else{
+						}else{						
 						
-						//System.out.println("caiu no if 1, p.top="+p.top().toString());
-						//System.out.println("caiu no if 1, exp="+exp[i]);
 						posfix+=p.pop().toString();
 						p.push(exp[i]);
 						
-						if(iii== (expre.length()-1)){
-							while(!p.isEmpty()){
-								posfix+=p.pop();
-							}
+											
 						}
 						
-						}
-						//adicionar ao if &&p.size()==1
 					}else if(prioridade(p.top().toString().toCharArray())<prioridade(exp[i])){
 						
-						if(ehFecha(exp[i])){
-							/*while(!p.top().toString().equals("(")){
-								posfix+=p.pop();
-							}*/
+						if(ehFecha(exp[i])){						
 							
 							while(!p.isEmpty()){
 								if(p.top().toString().equals("(")){
@@ -96,38 +71,24 @@ public class PilhaController {
 								}
 							}
 							
-						}else{
-						
-						//System.out.println("caiu no if 2, exp="+exp[i]);
-						//System.out.println("caiu no if 2, p.top="+p.top().toString());
+						}else{					
 						
 						p.push(exp[i]);
 						
-						if(iii== (expre.length()-1)){
-							while(!p.isEmpty()){
-								posfix+=p.pop();
-							}
-						}
+						
 						
 						}
 					}else if(prioridade(p.top().toString().toCharArray())==prioridade(exp[i])){
 						
 						
 						
-						//System.out.println("caiu no if 3, exp="+exp[i]);
-						//System.out.println("caiu no if 3, p.top="+p.top().toString());
-					//	posfix+=p.pop().toString();
+						
 						if(p.size()==1){
 							posfix+=p.pop();
 							p.push(exp[i]);							
 						}else if(p.size()>1){
 							posfix+=p.pop().toString();
-							//i--;
-							//vdd=true;
 							
-							/*if(p.size()==1){
-								
-							}*/
 							
 						}
 						
@@ -136,39 +97,28 @@ public class PilhaController {
 								posfix+=p.pop();
 							}
 						}
-						 	if(vdd){
-						 		//i++;
-						 	}
+						 	
 						
 					
 						
 			
 					}else if(isParenFecha(exp[i])){
-						//System.out.println("éé");
+						
 						int aa=p.size();
-						//System.out.println("\n\ntam da pilhaaaa: "+aa);
+						
 						
 						for(int a=0;a<aa;a++){
 					
 							if(!p.top().toString().equals("(")){
 								
-							//	System.err.println("é--"+p.top().toString());
+							
 								char aux[]=p.pop().toString().toCharArray();
-								//System.err.println(aux[0]);
+								
 							    posfix+=aux[0];
 							
-							    if(iii== (expre.length()-1)){
-									while(!p.isEmpty()){
-										posfix+=p.pop();
-									}
-								}
 						}else{					
 							p.pop();
-							if(iii== (expre.length()-1)){
-								while(!p.isEmpty()){
-									posfix+=p.pop();
-								}
-							}
+							
 							
 						}
 						
@@ -179,9 +129,9 @@ public class PilhaController {
 					}
 					
 					
-					//vdd=true;
-												}//for
-					vdd=true;
+					
+												}
+					
 					
 					
 				}
@@ -205,22 +155,22 @@ public class PilhaController {
 	
 	
 	
-	
+	//calcula expressao posfixa
 	public Pilha postfixCalculator(Pilha p,String pos){
 		char[] exp=pos.toCharArray();
 		
 		for(int i=0;i<exp.length;i++){
-			//System.err.println("\n\nexp i"+exp[i]);
+			
 			
 			if(ehNumero(exp[i])){	
-				//System.err.println("\n\né num: "+exp[i]);
+				
 				p.push(exp[i]);
 				
 			}else if (isOperator(exp[i])){
 				String aux1=p.pop().toString();
-				//System.out.println("aux1= "+aux1);
+				
 				String aux2=p.pop().toString();
-				//System.out.println("aux1= "+aux1);
+				
 				p.push(calculadora(Integer.parseInt(aux1), Integer.parseInt(aux2), exp[i]));
 			}
 			
@@ -392,15 +342,13 @@ public class PilhaController {
 			}
 		}
 		
-		/*while(!binario.isEmpty()){
-			System.out.println(binario.pop());
-		}*/
+		
 		return binario;
 		
 	}
 	
 	public void mostraBinario(Pilha p1, Pilha p2){
-		//view.imprimePalindromo(b);		
+				
 		view.imprimeBinario(conversaoBinaria(p1, p2));
 		System.out.println("\n");
 	}
