@@ -18,6 +18,8 @@ public class PilhaController {
 		char[] exp = expre.toCharArray();		
 		String posfix = "";
 		boolean isover=false;
+		
+		
 		//percorre a expressao
 		for(int i =0 ; i < exp.length;i++){
 			
@@ -34,26 +36,25 @@ public class PilhaController {
 					
 					
 				}else{
+					
 					int ii=p.size();
 					boolean vdd=false;
+					//percorre a pilha enquanto existir elementos nela
 					for(int iii=0;iii<ii;iii++){
+						
 						if(isover){
 							break;
 						}else{
 							
-						}
-						
-						
+						}						
 					if(prioridade(p.top().toString().toCharArray())>prioridade(exp[i])){
 						
 						if(p.top().toString().equals("(")){							
 							p.push(exp[i]);								
 							break;
 						}else{						
-						
 						posfix+=p.pop().toString();
 						p.push(exp[i]);
-						
 											
 						}
 						
@@ -80,9 +81,6 @@ public class PilhaController {
 						}
 					}else if(prioridade(p.top().toString().toCharArray())==prioridade(exp[i])){
 						
-						
-						
-						
 						if(p.size()==1){
 							posfix+=p.pop();
 							p.push(exp[i]);							
@@ -90,31 +88,21 @@ public class PilhaController {
 							posfix+=p.pop().toString();
 							
 							
-						}
-						
+						}						
 						if(iii== (expre.length()-1)){
 							while(!p.isEmpty()){
 								posfix+=p.pop();
 							}
 						}
-						 	
 						
-					
-						
-			
 					}else if(isParenFecha(exp[i])){
-						
 						int aa=p.size();
-						
 						
 						for(int a=0;a<aa;a++){
 					
 							if(!p.top().toString().equals("(")){
-								
-							
-								char aux[]=p.pop().toString().toCharArray();
-								
-							    posfix+=aux[0];
+							char aux[]=p.pop().toString().toCharArray();
+							posfix+=aux[0];
 							
 						}else{					
 							p.pop();
