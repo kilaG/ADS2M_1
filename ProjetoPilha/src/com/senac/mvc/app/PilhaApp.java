@@ -20,7 +20,7 @@ public class PilhaApp {
 		
 		PilhaController pilha = new PilhaController();
 		
-		Pilha palindromo = new Pilha();
+		/*Pilha palindromo = new Pilha();
 		palindromo.push("o");
 		palindromo.push("v");
 		palindromo.push("o");
@@ -30,10 +30,11 @@ public class PilhaApp {
 		Pilha p1 = new Pilha();
 		Pilha p2 = new Pilha();		
 		p1.push(50);		
-		pilha.mostraBinario(p1,p2);
+		pilha.mostraBinario(p1,p2);*/
 		
 	
-		String exp="2*2+(2*2)";
+		//String exp="2*2+(2*2)";
+		String[] exp={"2","*","2","+","(","2","*","2",")"};
 		Pilha p = new Pilha();
 		pilha.postfixCalculator(p, pilha.infixaparaposfixa(p, exp));
 		pilha.mostraExp(p);
