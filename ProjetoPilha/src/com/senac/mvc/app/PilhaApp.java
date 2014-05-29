@@ -34,11 +34,17 @@ public class PilhaApp {
 		
 	
 		
-		String[] exp={"2","*","2","+","(","2","*","2",")"};
-		/*String[] exp = new String[3];
-		exp[0]="2";
+		//String[] exp={"2","*","2","+","(","2","*","2",")"};
+		String[] exp = new String[7];
+		exp[0]="30";
 		exp[1]="+";
-		exp[2]="2";*/
+		exp[2]="10";
+		exp[3]="+";		
+		exp[4]="5";
+		exp[5]="*";
+		exp[6]="5";
+		
+		
 		Pilha p = new Pilha();
 //		pilha.postfixCalculator(p, pilha.infixaparaposfixa(p, exp));
 		
