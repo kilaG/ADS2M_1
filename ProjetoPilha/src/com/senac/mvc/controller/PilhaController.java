@@ -154,11 +154,11 @@ public class PilhaController {
 			if(exp[i]==null){
 				break;
 			}else{
-			
+			//quando acha um numero empilha
 			if(ehNumero(exp[i])){	
 				
 				p.push(exp[i]);
-				
+				//quando acha um operador desempilha dois numeros e faz o calculo depois empilha o resultado
 			}else if (isOperator(exp[i])){
 				String aux1=p.pop().toString();
 				
