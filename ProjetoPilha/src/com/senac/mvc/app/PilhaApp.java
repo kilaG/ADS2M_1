@@ -33,11 +33,22 @@ public class PilhaApp {
 		pilha.mostraBinario(p1,p2);*/
 		
 	
-		//String exp="2*2+(2*2)";
+		
 		String[] exp={"2","*","2","+","(","2","*","2",")"};
+		/*String[] exp = new String[3];
+		exp[0]="2";
+		exp[1]="+";
+		exp[2]="2";*/
 		Pilha p = new Pilha();
-		pilha.postfixCalculator(p, pilha.infixaparaposfixa(p, exp));
-		pilha.mostraExp(p);
+//		pilha.postfixCalculator(p, pilha.infixaparaposfixa(p, exp));
+		
+		/*int i=0;
+		while(pilha.infixaparaposfixa(p, exp33)[i]!=null){
+			System.err.println(pilha.infixaparaposfixa(p, exp33)[i]);
+			i++;
+		}*/
+		
+		pilha.mostraExp(pilha.postfixCalculator(p, pilha.infixaparaposfixa(p, exp)));
 		
 
 	}

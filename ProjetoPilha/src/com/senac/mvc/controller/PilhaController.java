@@ -199,7 +199,9 @@ public class PilhaController {
 		for(int i =0 ; i < exp.length;i++){
 			
 			if(ehNumero(exp[i])){
-				posfix[indicePosfix]+=exp[i];		
+				System.out.println("EHNUMERO EXP I="+exp[i]);
+				posfix[indicePosfix]=exp[i];	
+				indicePosfix++;
 				
 			}else if(isOperator(exp[i])){
 				
@@ -228,7 +230,8 @@ public class PilhaController {
 							p.push(exp[i]);								
 							break;
 						}else{						
-							posfix[indicePosfix]+=p.pop().toString();
+							posfix[indicePosfix]=p.pop().toString();
+							indicePosfix++;
 						p.push(exp[i]);
 											
 						}
@@ -244,6 +247,7 @@ public class PilhaController {
 									break;
 								}else{
 									posfix[indicePosfix]+=p.pop();
+									indicePosfix++;
 								}
 							}
 							
@@ -257,16 +261,19 @@ public class PilhaController {
 					}else if(prioridade(p.top().toString().toCharArray())==prioridade(exp[i])){
 						
 						if(p.size()==1){
-							posfix[indicePosfix]+=p.pop();
+							posfix[indicePosfix]=p.pop().toString();
+							indicePosfix++;
 							p.push(exp[i]);							
 						}else if(p.size()>1){
-							posfix[indicePosfix]+=p.pop().toString();
+							posfix[indicePosfix]=p.pop().toString();
+							indicePosfix++;
 							
 							
 						}						
 						if(iii== (expre.length-1)){
 							while(!p.isEmpty()){
-								posfix[indicePosfix]+=p.pop();
+								posfix[indicePosfix]=p.pop().toString();
+								indicePosfix++;
 							}
 						}
 						
@@ -276,8 +283,10 @@ public class PilhaController {
 						for(int a=0;a<aa;a++){
 					
 							if(!p.top().toString().equals("(")){
-							char aux[]=p.pop().toString().toCharArray();
-							posfix[indicePosfix]+=aux[0];
+							String aux=p.pop().toString();
+							
+							posfix[indicePosfix]=aux;
+							indicePosfix++;
 							
 						}else{					
 							p.pop();
@@ -309,7 +318,8 @@ public class PilhaController {
 		}
 		
 		while(!p.isEmpty()){
-			posfix[indicePosfix]+=p.pop();
+			posfix[indicePosfix]=p.pop().toString();
+			indicePosfix++;
 		}
 		
 		return posfix;
@@ -341,10 +351,26 @@ public class PilhaController {
 	
 	
 	//calcula expressao posfixa
-	public Pilha postfixCalculator(Pilha p,String[] exp){
+	public Pilha postfixCalculator(Pilha p,String[] exp1){
+		
+		
+		for(int z=0;z<exp1.length;z++){
+			System.out.print(exp1[z]);
+		}
+		
+		
+		System.out.println("\n\n\n\n\nEXP1=  "+exp1[0]);
 	//	char[] exp=pos.toCharArray();
+		String[] exp=exp1;
 		
 		for(int i=0;i<exp.length;i++){
+			if(exp[i]==null){
+				System.out.println("\n\n\n\nÉ NULO");
+				break;
+			}else{
+				System.err.print("\n\niteracao: "+i+ "exp: "+exp[i]+"top: "+p.size()+"\n\n");
+				
+			
 			System.err.println("\n\n"+i);
 			
 			System.out.println("\n\n\nexp= "+exp[i]);
@@ -360,7 +386,7 @@ public class PilhaController {
 				p.push(calculadora(Integer.parseInt(aux1), Integer.parseInt(aux2), exp[i]));
 			}
 			
-			
+		}	
 			
 		}
 		
@@ -409,6 +435,7 @@ public class PilhaController {
 	
 	
 	public boolean isOperator(String exp){
+		System.out.println("\n\n\nisoperator exp= "+exp);
 		if(exp.equals("+")||exp.equals("-")||exp.equals("*")||exp.equals("/")||exp.equals("$")||exp.equals("(")||exp.equals(")")){
 			return true;			
 		}else{
@@ -424,12 +451,12 @@ public class PilhaController {
 		}
 	}
 	
-	public boolean ehNumero(Object c){
+	public boolean ehNumero(String c){
 		try{
 			String a ="";
 		/*String*/ 
-			System.out.println("objeto ="+c.toString());
-			a=c.toString();
+			System.out.println("objeto ="+c);
+			a=c;
 		if(Integer.parseInt(a)>=0||Integer.parseInt(a)<=0){
 			return true;
 		}else{
